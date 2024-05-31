@@ -1,0 +1,16 @@
+{
+  "name": "amazon-clone",
+  "version": "1.0.0",
+  "description": "Built with HTML CSS and JS",
+  "main": "",
+  "devDependencies": {
+    "servor": "4.0.0"
+  },
+  "scripts": {
+    "start": "servor www amazon.html 8080 --reload --browse",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "KASAIJA KENNETH",
+  "license": "ISC"
+}
