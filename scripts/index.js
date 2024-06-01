@@ -1,3 +1,6 @@
+import { cart } from '../data/cart.js'
+import { products } from '../data/products.js'
+
 let productsHtml = '';
 products.forEach(product => {
   const { image, name, rating, priceCents, id } = product
@@ -75,7 +78,7 @@ document.querySelectorAll('.add-to-cart-button').forEach((btn) => {
     })
 
     //cart quantity indicator in the browser
-    document.querySelector('.cart-quantity'). innerHTML = cartQuantity
+    document.querySelector('.cart-quantity').innerHTML = cartQuantity
     console.log(cartQuantity)
   })
 })
