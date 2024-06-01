@@ -64,10 +64,19 @@ document.querySelectorAll('.add-to-cart-button').forEach((btn) => {
       if (productId === item.productId) matchedItem = item
     })
 
+    //Quantity of each item in the cart
     if (matchedItem) matchedItem.quantity += 1
     else cart.push({ productId, quantity: 1 })
 
-    console.log(cart)
+    //Total cart quantity
+    let cartQuantity = 0
+    cart.forEach(item => {
+      cartQuantity += item.quantity
+    })
+
+    //cart quantity indicator in the browser
+    document.querySelector('.cart-quantity'). innerHTML = cartQuantity
+    console.log(cartQuantity)
   })
 })
 
