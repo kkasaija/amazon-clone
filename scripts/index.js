@@ -63,6 +63,7 @@ document.querySelectorAll('.add-to-cart-button').forEach((btn) => {
     const productId = btn.dataset.productId;
     cartModule.addToCart(productId);
     updateCartQuantity();
+    console.log(cartModule.cart)
   })
 })
 
@@ -76,5 +77,3 @@ function updateCartQuantity() {
   //cart quantity indicator in the browser
   document.querySelector('.cart-quantity').innerHTML = cartQuantity
 }
-
-
