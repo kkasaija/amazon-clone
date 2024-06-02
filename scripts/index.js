@@ -1,7 +1,11 @@
-let productsHtml = '';
-products.forEach(product => {
-  const { image, name, rating, priceCents, id } = product
-  productsHtml += `
+import * as cartModule from "../data/cart.js";
+import { products } from "../data/products.js";
+import * as utilsModule from "./utils/money.js";
+
+let productsHtml = "";
+products.forEach((product) => {
+	const { image, name, rating, priceCents, id } = product;
+	productsHtml += `
     <div class="product-container">
     <div class="product-image-container">
       <img class="product-image"
@@ -21,7 +25,7 @@ products.forEach(product => {
     </div>
 
     <div class="product-price">
-      $${(priceCents / 100).toFixed(2)}
+      $${utilsModule.formatCurrency(priceCents)}
     </div>
 
     <div class="product-quantity-container">
@@ -51,33 +55,26 @@ products.forEach(product => {
       Add to Cart
     </button>
   </div>
-  `
+  `;
 });
 
-document.querySelector('.products-grid').innerHTML = productsHtml
-document.querySelectorAll('.add-to-cart-button').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const productId = btn.dataset.productId;
+document.querySelector(".products-grid").innerHTML = productsHtml;
+document.querySelectorAll(".add-to-cart-button").forEach((btn) => {
+	btn.addEventListener("click", () => {
+		const productId = btn.dataset.productId;
+		cartModule.addToCart(productId);
+		updateCartQuantity();
+		console.log(cartModule.cart);
+	});
+});
 
-    let matchedItem;
-    cart.forEach(item => {
-      if (productId === item.productId) matchedItem = item
-    })
+function updateCartQuantity() {
+	//Total cart quantity
+	let cartQuantity = 0;
+	cartModule.cart.forEach((cartItem) => {
+		cartQuantity += cartItem.quantity;
+	});
 
-    //Quantity of each item in the cart
-    if (matchedItem) matchedItem.quantity += 1
-    else cart.push({ productId, quantity: 1 })
-
-    //Total cart quantity
-    let cartQuantity = 0
-    cart.forEach(item => {
-      cartQuantity += item.quantity
-    })
-
-    //cart quantity indicator in the browser
-    document.querySelector('.cart-quantity'). innerHTML = cartQuantity
-    console.log(cartQuantity)
-  })
-})
-
-
+	//cart quantity indicator in the browser
+	document.querySelector(".cart-quantity").innerHTML = cartQuantity;
+}

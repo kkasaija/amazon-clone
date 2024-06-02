@@ -1,0 +1,14 @@
+{
+  "editor.fontSize": 16,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.fontLigatures": false,
+  "editor.fontVariations": false,
+  "html.format.indentInnerHtml": true,
+  "html.format.indentHandlebars": true,
+  "files.autoSave": "afterDelay",
+  "prettier.bracketSameLine": true,
+  "prettier.htmlWhitespaceSensitivity": "strict",
+  "prettier.singleAttributePerLine": true,
+  "prettier.useTabs": true
+}
