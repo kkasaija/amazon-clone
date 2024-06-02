@@ -1,4 +1,4 @@
-import { cart } from "../data/cart.js";
+import { cart, deleteCartItem } from "../data/cart.js";
 import { products } from "../data/products.js";
 import * as utilsModule from "./utils/money.js";
 
@@ -14,7 +14,7 @@ cart.forEach((cartItem) => {
 	});
 
 	cartSummaryHtml += `
-    <div class="cart-item-container">
+    <div class="cart-item-container cart-item-container-${matchedProduct.id}">
       <div class="delivery-date">
         Delivery date: Tuesday, June 21
       </div>
@@ -77,8 +77,13 @@ document.querySelector(".order-summary").innerHTML = cartSummaryHtml;
 
 //implement delete button
 document.querySelectorAll(".delete-quantity-link").forEach((btn) => {
-	btn.addEventListener("click", function(){
-    const productId = btn.dataset.productId
-  });
-});
+	btn.addEventListener("click", function () {
+		const productId = btn.dataset.productId;
+    
+    //update the cart
+		deleteCartItem(productId);
 
+    //remove the item from the dom
+		document.querySelector(`.cart-item-container-${productId}`).remove();
+	});
+});
