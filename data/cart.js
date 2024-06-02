@@ -1,6 +1,6 @@
 //cart.js is a module
 
-export const cart = [
+export let cart = [
 	{
 		productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
 		quantity: 2,
@@ -20,4 +20,14 @@ export function addToCart(id) {
 	//Quantity of each item in the cart
 	if (matchedItem) matchedItem.quantity += 1;
 	else cart.push({ productId: id, quantity: 1 });
+}
+
+export function deleteCartItem(productId) {
+  //cart = cart.filter(cartItem => cartItem.productId !== productId)
+  const updatedCart = [];
+  cart.forEach(cartItem => {
+    if(cartItem.productId !== productId) updatedCart.push(cartItem)
+  })
+
+  cart = updatedCart;
 }
