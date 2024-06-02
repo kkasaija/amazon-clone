@@ -1,20 +1,17 @@
 //cart.js is a module
 
-export let cart = JSON.parse(localStorage.getItem('cart')) || [];
+export let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function saveCartToLocalStorage() {
 	localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 export function addToCart(id) {
-	let matchedItem;
-	cart.forEach((cartItem) => {
-		if (id === cartItem.productId) matchedItem = cartItem;
-	});
+	let matchedItem = searchForCartItem(cart, id);
 
 	//Quantity of each item in the cart
 	if (matchedItem) matchedItem.quantity += 1;
-	else cart.push({ productId: id, quantity: 1, deliveryOptionId: '1' });
+	else cart.push({ productId: id, quantity: 1, deliveryOptionId: "1" });
 	saveCartToLocalStorage();
 }
 
@@ -26,5 +23,20 @@ export function deleteCartItem(productId) {
 	});
 
 	cart = updatedCart;
-  saveCartToLocalStorage()
+	saveCartToLocalStorage();
+}
+
+//search for a target item in the cart
+function searchForCartItem(cart, id) {
+	let item;
+	cart.forEach((cartItem) => {
+		if (id === cartItem.productId) item = cartItem;
+	});
+	return item;
+}
+
+export function updateDeliveryOption(productId, deliveryOptionId) {
+	let matchedItem = searchForCartItem(cart, productId);
+	matchedItem.deliveryOptionId = deliveryOptionId;
+	saveCartToLocalStorage();
 }

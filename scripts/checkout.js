@@ -1,5 +1,5 @@
 import dayjs from "https://unpkg.com/dayjs@1.11.11/esm/index.js";
-import { cart, deleteCartItem } from "../data/cart.js";
+import { cart, deleteCartItem, updateDeliveryOption } from "../data/cart.js";
 import { products } from "../data/products.js";
 import * as utilsModule from "./utils/money.js";
 import { deliveryOptions } from "../data/deliveryOptions.js";
@@ -95,7 +95,9 @@ function deliveryOptionsHTML(matchedProduct, cartItem) {
 					: `$${utilsModule.formatCurrency(priceCents)}`;
 
 		html += `
-      <div class="delivery-option">
+      <div class="delivery-option" data-product-id="${
+				matchedProduct.id
+			}" data-delivery-option-id="${deliveryOptionId}">
         <input 
           type="radio"
           ${isChecked ? "checked" : ""}
@@ -112,8 +114,17 @@ function deliveryOptionsHTML(matchedProduct, cartItem) {
 }
 
 //delivery date
-function deliverBy(...args) {
-	const today = dayjs(),
-		deliveryDate = today.add(args[0], `${args[1]}`);
-	return deliveryDate.format(`${[args[2]]}`);
+function deliverBy() {
+	const [dayCount, durationStr, dateString] = arguments;
+	const today = dayjs();
+	const deliveryDate = today.add(dayCount, durationStr);
+	return deliveryDate.format(dateString);
 }
+
+//Add event listeners to radio buttons
+document.querySelectorAll(".delivery-option").forEach((element) => {
+	element.addEventListener("click", () => {
+		const { productId, deliveryOptionId } = element.dataset;
+		updateDeliveryOption(productId, deliveryOptionId);
+	});
+});
