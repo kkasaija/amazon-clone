@@ -1,10 +1,11 @@
-import * as cartModule from '../data/cart.js'
-import { products } from '../data/products.js'
+import * as cartModule from "../data/cart.js";
+import { products } from "../data/products.js";
+import * as utilsModule from "./utils/money.js";
 
-let productsHtml = '';
-products.forEach(product => {
-  const { image, name, rating, priceCents, id } = product
-  productsHtml += `
+let productsHtml = "";
+products.forEach((product) => {
+	const { image, name, rating, priceCents, id } = product;
+	productsHtml += `
     <div class="product-container">
     <div class="product-image-container">
       <img class="product-image"
@@ -24,7 +25,7 @@ products.forEach(product => {
     </div>
 
     <div class="product-price">
-      $${(priceCents / 100).toFixed(2)}
+      $${utilsModule.formatCurrency(priceCents)}
     </div>
 
     <div class="product-quantity-container">
@@ -54,26 +55,26 @@ products.forEach(product => {
       Add to Cart
     </button>
   </div>
-  `
+  `;
 });
 
-document.querySelector('.products-grid').innerHTML = productsHtml
-document.querySelectorAll('.add-to-cart-button').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const productId = btn.dataset.productId;
-    cartModule.addToCart(productId);
-    updateCartQuantity();
-    console.log(cartModule.cart)
-  })
-})
+document.querySelector(".products-grid").innerHTML = productsHtml;
+document.querySelectorAll(".add-to-cart-button").forEach((btn) => {
+	btn.addEventListener("click", () => {
+		const productId = btn.dataset.productId;
+		cartModule.addToCart(productId);
+		updateCartQuantity();
+		console.log(cartModule.cart);
+	});
+});
 
 function updateCartQuantity() {
-  //Total cart quantity
-  let cartQuantity = 0
-  cartModule.cart.forEach(cartItem => {
-    cartQuantity += cartItem.quantity
-  })
+	//Total cart quantity
+	let cartQuantity = 0;
+	cartModule.cart.forEach((cartItem) => {
+		cartQuantity += cartItem.quantity;
+	});
 
-  //cart quantity indicator in the browser
-  document.querySelector('.cart-quantity').innerHTML = cartQuantity
+	//cart quantity indicator in the browser
+	document.querySelector(".cart-quantity").innerHTML = cartQuantity;
 }
