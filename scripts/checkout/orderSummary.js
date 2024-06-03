@@ -3,6 +3,7 @@ import { cart, deleteCartItem, updateDeliveryOption } from "../../data/cart.js";
 import { getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
 import { getDeliveryOption, deliveryOptions } from "../../data/deliveryOptions.js";
+import { renderPaymentSummary } from "./paymentSummary.js";
 
 export function renderOrderSummary() {
 	let cartSummaryHtml = " ";
@@ -69,6 +70,7 @@ export function renderOrderSummary() {
 
 			//remove the item from the dom
 			document.querySelector(`.cart-item-container-${productId}`).remove();
+      renderPaymentSummary();
 		});
 	});
 
@@ -118,6 +120,7 @@ export function renderOrderSummary() {
 			const { productId, deliveryOptionId } = element.dataset;
 			updateDeliveryOption(productId, deliveryOptionId);
 			renderOrderSummary();
+      renderPaymentSummary();
 		});
 	});
 
