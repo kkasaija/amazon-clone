@@ -25,8 +25,9 @@ cart.forEach((cartItem) => {
 	);
 
 	cartSummaryHtml += `
-    <div 
-      class="cart-item-container cart-item-container-${matchedProduct.id}">
+    <div
+      class="cart-item-container 
+      cart-item-container-${matchedProduct.id}">
       <div class="delivery-date">
         Delivery date: ${dateString}
       </div>
@@ -96,9 +97,9 @@ function deliveryOptionsHTML(matchedProduct, cartItem) {
 				: `$${formatCurrency(deliveryOption.priceCents)}`;
 
 		html += `
-      <div class="delivery-option" data-product-id="${
-				matchedProduct.id
-			}" data-delivery-option-id="${cartItem.deliveryOptionId}">
+      <div class="delivery-option" 
+        data-product-id="${matchedProduct.id}" 
+        data-delivery-option-id="${deliveryOption.id}">
         <input 
           type="radio"
           ${isChecked ? "checked" : ""}
