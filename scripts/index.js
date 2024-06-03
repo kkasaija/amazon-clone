@@ -1,31 +1,30 @@
-import * as cartModule from "../data/cart.js";
+import { addToCart, cart } from "../data/cart.js";
 import { products } from "../data/products.js";
-import * as utilsModule from "./utils/money.js";
+import { formatCurrency } from "./utils/money.js";
 
 let productsHtml = "";
 products.forEach((product) => {
-	const { image, name, rating, priceCents, id } = product;
 	productsHtml += `
     <div class="product-container">
     <div class="product-image-container">
       <img class="product-image"
-        src=${image}>
+        src=${product.image}>
     </div>
 
     <div class="product-name limit-text-to-2-lines">
-      ${name}
+      ${product.name}
     </div>
 
     <div class="product-rating-container">
       <img class="product-rating-stars"
-        src="images/ratings/rating-${rating.stars * 10}.png">
+        src="images/ratings/rating-${product.rating.stars * 10}.png">
       <div class="product-rating-count link-primary">
-        ${rating.count}
+        ${product.rating.count}
       </div>
     </div>
 
     <div class="product-price">
-      $${utilsModule.formatCurrency(priceCents)}
+      $${formatCurrency(product.priceCents)}
     </div>
 
     <div class="product-quantity-container">
@@ -51,7 +50,7 @@ products.forEach((product) => {
     </div>
 
     <button class="add-to-cart-button button-primary"
-    data-product-id="${id}">
+    data-product-id="${product.id}">
       Add to Cart
     </button>
   </div>
@@ -62,16 +61,18 @@ document.querySelector(".products-grid").innerHTML = productsHtml;
 document.querySelectorAll(".add-to-cart-button").forEach((btn) => {
 	btn.addEventListener("click", () => {
 		const productId = btn.dataset.productId;
-		cartModule.addToCart(productId);
+		addToCart(productId);
 		updateCartQuantity();
-		console.log(cartModule.cart);
 	});
 });
+
+//run updateCartQuantity on page load
+updateCartQuantity();
 
 function updateCartQuantity() {
 	//Total cart quantity
 	let cartQuantity = 0;
-	cartModule.cart.forEach((cartItem) => {
+	cart.forEach((cartItem) => {
 		cartQuantity += cartItem.quantity;
 	});
 
