@@ -120,14 +120,6 @@ function deliveryOptionsHTML(matchedProduct, cartItem) {
 	return html;
 }
 
-//delivery date
-function deliverBy() {
-	const [dayCount, durationStr, dateString] = arguments;
-	const today = dayjs();
-	const deliveryDate = today.add(dayCount, durationStr);
-	return deliveryDate.format(dateString);
-}
-
 //Add event listeners to radio buttons
 document.querySelectorAll(".delivery-option").forEach((element) => {
 	element.addEventListener("click", () => {
@@ -135,3 +127,11 @@ document.querySelectorAll(".delivery-option").forEach((element) => {
 		updateDeliveryOption(productId, deliveryOptionId);
 	});
 });
+
+//delivery date
+function deliverBy() {
+	const [dayCount, durationStr, dateString] = arguments;
+	const today = dayjs();
+	const deliveryDate = today.add(dayCount, durationStr);
+	return deliveryDate.format(dateString);
+}
