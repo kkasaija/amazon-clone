@@ -30,3 +30,10 @@ Built with HTML CSS and JS
   **View:** The code that takes the data and displays it on the page
   
   **Controller** The part that runs some code when we interact with the page
+
+## Automated testing:
+
+  - Basic test cases: to check if the code is working
+
+  - Edge test cases: checks for functonality with edge inputs. i.e numbers that are tricky e.g
+  0 and decimals
