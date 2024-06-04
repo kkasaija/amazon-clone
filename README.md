@@ -21,3 +21,12 @@ Built with HTML CSS and JS
 - add type="module" attribute
 - export
 - import
+
+## MVC 
+- Model View Controller
+
+  **Model:** The part that saves and manages the data
+
+  **View:** The code that takes the data and displays it on the page
+  
+  **Controller** The part that runs some code when we interact with the page
