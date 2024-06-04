@@ -17,6 +17,8 @@ export function renderPaymentSummary() {
 		totalShippingCost += deliveryOption.priceCents;
 	});
 
+  document.querySelector('.return-to-home-link').innerHTML = `${quantity} items`
+
 	const totalBeforeTax = totalProductCost + totalShippingCost;
 
 	//10% tax

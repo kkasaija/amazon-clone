@@ -2,6 +2,7 @@
   "name": "amazon-clone",
   "version": "1.0.0",
   "description": "Built with HTML CSS and JS",
+  "type": "module",
   "devDependencies": {
     "servor": "4.0.0"
   },
