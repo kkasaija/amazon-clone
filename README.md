@@ -37,3 +37,20 @@ Built with HTML CSS and JS
 
   - Edge test cases: checks for functonality with edge inputs. i.e numbers that are tricky e.g
   0 and decimals
+
+## Testing
+
+- agroup of related tests is called a test suite
+
+  **Testing frameworks**
+  - Testing frameworks help speedup testing processes.
+
+  ***Testing frameworks examples***
+
+    [Jasmine](https://jasmine.github.io/)
+    [Mocha]()
+
+    [Chai]()
+    
+    [Jest]()
+
