@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8">
     <title>Jasmine Spec Runner v5.1.1</title>
@@ -11,14 +12,16 @@
     <!-- optional: include a file here that configures the Jasmine env -->
     <script src="lib/jasmine-5.1.1/boot1.js"></script>
 
-    <!-- source files -->
-    <script type="module" src="../scripts/utils/money.js"></script>
-    <script type="module" src="../data/cart.js"></script>
-
     <!-- spec files -->
     <script type="module" src="spec/utils/money.spec.js"></script>
     <script type="module" src="spec/data/cart.spec.js"></script>
+    <script type="module" src="spec/checkout/orderSummary.spec.js"></script>
   </head>
+
   <body>
+    <div class="main">
+      <div class="test-container"></div>
+    </div>
   </body>
+
 </html>
