@@ -54,3 +54,11 @@ Built with HTML CSS and JS
     
     [Jest]()
 
+## Unit Test
+
+- tests a single unit/ function of code
+
+## Integration test
+
+- tests many units of code or a function that uses many units of code to render UI
+
