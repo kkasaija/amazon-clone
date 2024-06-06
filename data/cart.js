@@ -1,6 +1,11 @@
 //cart.js is a module
 
-export let cart = JSON.parse(localStorage.getItem("cart")) || [];
+export let cart;
+loadFromStorage();
+
+export function loadFromStorage(){
+  cart = JSON.parse(localStorage.getItem("cart")) || [];
+}
 
 function saveCartToLocalStorage() {
 	localStorage.setItem("cart", JSON.stringify(cart));
