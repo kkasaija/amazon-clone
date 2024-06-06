@@ -26,7 +26,7 @@ export function renderOrderSummary() {
       </div>
 
       <div class="cart-item-details-grid">
-        <img class="product-image" src="${matchedProduct.image}">
+        <img class="product-image" src="./${matchedProduct.image}">
 
         <div class="cart-item-details">
           <div class="product-name">${matchedProduct.name}</div>
@@ -34,7 +34,7 @@ export function renderOrderSummary() {
             $${formatCurrency(matchedProduct.priceCents)}
           </div>
 
-          <div class="product-quantity">
+          <div class="product-quantity js-product-quantity-${matchedProduct.id}">
             <span>
               Quantity: <span class="quantity-label">${cartItem.quantity}</span>
             </span>
@@ -42,7 +42,9 @@ export function renderOrderSummary() {
               Update
             </span>
             <span 
-              class="delete-quantity-link link-primary" 
+              class="delete-quantity-link link-primary
+              delete-quantity-link-${cartItem.productId}
+              " 
               data-product-id="${cartItem.productId}">
               Delete
             </span>
