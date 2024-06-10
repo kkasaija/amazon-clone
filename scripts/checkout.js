@@ -9,11 +9,16 @@ import { loadDataFromBackend } from "../data/fromBackend.js";
 
 
 //using promises
-new Promise((resolve) => {
-  loadDataFromBackend(function () {
-    resolve()//go to next step if loadDataFromBackend has finished execution
-  })
-}).then(function () {
+// new Promise((resolve) => {
+//   loadDataFromBackend(function () {
+//     resolve()//go to next step if loadDataFromBackend has finished execution
+//   })
+// }).then(function () {
+//   renderOrderSummary();
+//   renderPaymentSummary();
+// })
+
+loadDataFromBackend().then(function () {
   renderOrderSummary();
   renderPaymentSummary();
 })

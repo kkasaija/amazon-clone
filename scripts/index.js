@@ -2,10 +2,7 @@ import { addToCart, cart } from "../data/cart.js";
 // import { products } from "../data/products.js";
 import { products, loadDataFromBackend } from "../data/fromBackend.js";
 
-loadDataFromBackend(renderProductsGrid)
-new Promise(function () {
-  loadDataFromBackend(function () { resolve() })
-}).then(function () {
+loadDataFromBackend().then(function () {
   renderProductsGrid()
 })
 

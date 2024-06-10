@@ -1,5 +1,5 @@
 {
-  "editor.fontSize": 14,
+  "editor.fontSize": 16,
   "editor.tabSize": 2,
   "editor.fontFamily": "'JetBrains Mono', Consolas, 'Courier New', monospace",
   "editor.detectIndentation": false,
@@ -7,9 +7,5 @@
   "editor.fontVariations": false,
   "html.format.indentInnerHtml": true,
   "html.format.indentHandlebars": true,
-  "files.autoSave": "afterDelay",
-  "prettier.bracketSameLine": true,
-  "prettier.htmlWhitespaceSensitivity": "strict",
-  "prettier.singleAttributePerLine": true,
-  "prettier.useTabs": true
+  "files.autoSave": "afterDelay"
 }
