@@ -1,4 +1,3 @@
-
 // constructor function for the cart object
 function Cart(localStorageKey) {
   const cart = {
@@ -15,12 +14,19 @@ function Cart(localStorageKey) {
       let matchedItem = this.searchForCartItem(this.cartItems, id);
       //Quantity of each item in the cart
       if (matchedItem) matchedItem.quantity += 1;
-      else this.cartItems.push({ productId: id, quantity: 1, deliveryOptionId: "1" });
+      else
+        this.cartItems.push({
+          productId: id,
+          quantity: 1,
+          deliveryOptionId: '1',
+        });
       this.saveCartToLocalStorage();
     },
 
     deleteCartItem(productId) {
-      this.cartItems = this.cartItems.filter(cartItem => cartItem.productId !== productId)
+      this.cartItems = this.cartItems.filter(
+        (cartItem) => cartItem.productId !== productId
+      );
       this.saveCartToLocalStorage();
     },
 
@@ -36,19 +42,18 @@ function Cart(localStorageKey) {
       let matchedItem = this.searchForCartItem(this.cartItems, productId);
       matchedItem.deliveryOptionId = deliveryOptionId;
       this.saveCartToLocalStorage();
-    }
-  }
+    },
+  };
 
-  return cart
+  return cart;
 }
 
-const ordinaryCart = Cart('ordinary-cart')
+const ordinaryCart = Cart('ordinary-cart');
 ordinaryCart.loadFromStorage();
-ordinaryCart.addToCart("54e0eccd-8f36-462b-b68a-8182611d9add")
-console.log(ordinaryCart)
+ordinaryCart.addToCart('54e0eccd-8f36-462b-b68a-8182611d9add');
+console.log(ordinaryCart);
 
-const businessCart = Cart('business-cart')
+const businessCart = Cart('business-cart');
 businessCart.loadFromStorage();
-businessCart.addToCart("54e0eccd-8f36-462")
-console.log(businessCart)
-
+businessCart.addToCart('54e0eccd-8f36-462');
+console.log(businessCart);

@@ -1,24 +1,7 @@
 import { formatCurrency } from "../scripts/utils/money.js";
 export let products = []
 
-// export function loadDataFromBackend(call_bk){
-//   const xhr = new XMLHttpRequest()
-//   xhr.addEventListener('load', ()=>{
-//     products = JSON.parse(xhr.response).map((productDetails) => {
-//       if (productDetails.type === 'clothing') {
-//         return new Clothing(productDetails)
-//       }
-//       return new Product(productDetails)
-//     });
-//     call_bk();
-//   })
-//   xhr.open('GET', 'https://supersimplebackend.dev/products')//setup a request
-//   xhr.send() //send request
-// }
-
 export function loadDataFromBackend() {
-  //am returning this promise because i want to execute other codes after
-  //the promise is resolved
   const promise = fetch('https://supersimplebackend.dev/products')
     .then((response) => response.json())
     .then((productsData) => {
